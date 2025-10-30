@@ -5,8 +5,11 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SaaS IA Boilerplate',
+  title: 'Boilerplate AI Academy',
   description: 'Boilerplate Next.js pour créer un SaaS IA de A à Z',
+  icons: {
+    icon: '/images/logo.jpg',
+  },
 }
 
 export default function RootLayout({

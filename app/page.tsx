@@ -1,105 +1,123 @@
+"use client"
+
+import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+
+const steps = [
+  {
+    img: '/images/1.jpeg',
+    number: 1,
+    desc: "Ouvrez votre terminal et installez le boilerplate sur votre machine.",
+  },
+  {
+    img: '/images/2.jpeg',
+    number: 2,
+    desc: "Dupliquez le fichier d’exemple pour générer votre configuration locale.",
+  },
+  {
+    img: '/images/3.jpeg',
+    number: 3,
+    desc: "Démarrez le serveur de développement et ouvrez le projet dans votre navigateur.",
+  },
+]
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            SaaS IA Boilerplate
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Un boilerplate Next.js minimal et bien organisé pour créer votre SaaS IA de A à Z
-          </p>
-        </div>
-
-        {/* Main Card */}
-        <Card className="max-w-4xl mx-auto mb-8">
-          <CardHeader>
-            <CardTitle className="text-2xl">🚀 Bienvenue sur ce boilerplate</CardTitle>
-            <CardDescription className="text-base">
-              Ce projet sert de support pédagogique pour le module Skool : "Construire un SaaS IA de A à Z"
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <h3 className="font-semibold text-lg mb-2">📦 Ce que vous trouverez ici :</h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-                <li>Une structure de fichiers propre et scalable</li>
-                <li>Configuration Next.js 14 avec App Router et TypeScript</li>
-                <li>TailwindCSS et shadcn/ui déjà configurés</li>
-                <li>Placeholders pour Supabase, Stripe et OpenAI</li>
-                <li>Des exemples de code commentés pour vous guider</li>
-              </ul>
+    <main
+      className="h-screen bg-white flex flex-col items-center justify-between font-aeonikpro px-4 py-6 relative"
+      style={{ fontFamily: "'Aeonik Pro TRIAL', sans-serif" }}
+    >
+      {/* Custom Font with next/font not supported for local non-Google; if needed add in _app */}
+      <header className="w-full flex flex-col items-center mt-8">
+        <Image
+          src="/images/logo.jpg"
+          alt="IA Academy Logo"
+          width={100}
+          height={50}
+          priority
+          className="mb-4 rounded-xl shadow-lg border border-gray-300"
+          style={{ maxWidth: "100px", width: "auto", height: "auto" }}
+        />
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">Votre base de lancement pour tout SaaS IA.</h1>
+      </header>
+      {/* Steps */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-32 w-full max-w-6xl flex-1 items-center">
+        {steps.map(step => (
+          <div key={step.number} className="flex flex-col items-center">
+            <div className="w-full flex flex-col items-center mb-2">
+              <div className="relative w-72 h-52 md:w-96 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src={step.img}
+                  alt={`Étape ${step.number}`}
+                  fill
+                  sizes="(max-width: 768px) 90vw, 350px"
+                  style={{ objectFit: 'cover' }}
+                  className="rounded"
+                  priority={step.number === 1}
+                />
+              </div>
             </div>
-            
-            <div>
-              <h3 className="font-semibold text-lg mb-2">⚠️ Important :</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Ce boilerplate ne contient <strong>aucun code métier fonctionnel</strong>. 
-                Il est conçu pour être complété étape par étape lors du cours.
-              </p>
-            </div>
-
-            <div className="pt-4">
-              <h3 className="font-semibold text-lg mb-2">📚 Documentation :</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Consultez le <code className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">README.md</code> pour 
-                comprendre la structure du projet et apprendre comment intégrer les différents services.
-              </p>
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="default" className="w-full sm:w-auto">
-                  📖 Lire la documentation
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">⚡ Stack Moderne</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Next.js 14, React, TypeScript, TailwindCSS et shadcn/ui
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">🔌 Services Prêts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Configuration pour Supabase, Stripe et OpenAI
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">📚 Documentation</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Guide complet étape par étape pour démarrer
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-16 text-gray-500 dark:text-gray-400">
-          <p>Démarrez votre SaaS IA dès aujourd'hui ! 🚀</p>
-        </div>
-      </div>
+            <div className="text-2xl md:text-3xl font-bold mt-2 text-gray-800">{step.number}</div>
+            <div className="text-sm text-gray-500 mt-1 text-center">{step.desc}</div>
+          </div>
+        ))}
+      </section>
+      {/* Footer doc/help */}
+      <footer className="w-full flex flex-col items-center">
+        <p className="text-gray-600 text-center text-xs md:text-sm">
+          Besoin d&apos;aide ? Consulte la{' '}
+          <Link href="/README.md#" className="underline text-black hover:text-black transition-colors" target="_blank">documentation</Link>{' '}ou la{' '}
+          <Link href="https://skool.com/ia-academy" className="underline text-black hover:text-black transition-colors" target="_blank">vidéo du module Skool</Link>.
+        </p>
+      </footer>
+      {/* Self-hosted font face */}
+      <style jsx global>{`
+        @font-face {
+          font-family: 'Aeonik Pro TRIAL';
+          src: url('/fonts/AeonikProTRIAL-Light.otf') format('opentype');
+          font-weight: 300;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Aeonik Pro TRIAL';
+          src: url('/fonts/AeonikProTRIAL-LightItalic.otf') format('opentype');
+          font-weight: 300;
+          font-style: italic;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Aeonik Pro TRIAL';
+          src: url('/fonts/AeonikProTRIAL-Regular.otf') format('opentype');
+          font-weight: 400;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Aeonik Pro TRIAL';
+          src: url('/fonts/AeonikProTRIAL-RegularItalic.otf') format('opentype');
+          font-weight: 400;
+          font-style: italic;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Aeonik Pro TRIAL';
+          src: url('/fonts/AeonikProTRIAL-Bold.otf') format('opentype');
+          font-weight: 700;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Aeonik Pro TRIAL';
+          src: url('/fonts/AeonikProTRIAL-BoldItalic.otf') format('opentype');
+          font-weight: 700;
+          font-style: italic;
+          font-display: swap;
+        }
+        html {
+          font-family: 'Aeonik Pro TRIAL', sans-serif;
+        }
+      `}</style>
     </main>
   )
 }

@@ -4,6 +4,13 @@ Ce guide vous permet de démarrer rapidement avec le boilerplate.
 
 ## Installation en 3 étapes
 
+### 0. Cloner le repo
+
+```bash
+git clone https://github.com/albvnn/IA-Academy-Boilerplate.git
+cd IA-Academy-Boilerplate
+```
+
 ### 1. Installer les dépendances
 
 ```bash
@@ -27,6 +34,25 @@ npm run dev
 ```
 
 Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
+
+## 📁 Ajouter des images et des fichiers statiques
+
+Les images et fichiers statiques doivent être placés dans le dossier `public/` :
+
+- Placez toutes vos images dans `public/images/` (ex : `public/images/logo.png`).
+- Elles sont accessibles dans votre app Next.js via `/images/logo.png`.
+
+**Utilisation dans un composant :**
+
+```tsx
+import Image from 'next/image'
+
+export default function Logo() {
+  return <Image src="/images/logo.png" alt="Logo" width={200} height={80} />
+}
+```
+
+Vous pouvez aussi ajouter vos favicons et autres fichiers statiques directement dans `public/`.
 
 ## ⚡ Commandes utiles
 

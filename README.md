@@ -137,6 +137,26 @@ Bibliothèques et configurations pour les services externes.
 #### 📁 `types/`
 Définitions de types TypeScript partagés dans l'application.
 
+#### 📁 `public/`
+Le dossier public permet d'inclure toutes les ressources statiques accessibles directement : images, favicon, robots.txt, etc.
+
+- **`public/images/`** : Placez ici toutes vos images (logo, illustrations, screenshots...). Elles seront accessibles dans le code avec `/images/mon_image.png`.
+
+**Utilisation d'une image dans un composant :**
+
+```tsx
+import Image from 'next/image'
+
+export default function Logo() {
+  return (
+    <Image src="/images/mon-logo.png" alt="Logo" width={200} height={80} />
+  )
+}
+```
+
+- Les fichiers placés dans `public/` sont servis tels quels par Next.js sans traitement particulier.
+- Pour un favicon, placez un fichier `favicon.ico` ou `favicon.png` directement dans `public/`.
+
 ---
 
 ## 🧩 Installation
@@ -154,8 +174,8 @@ Avant de commencer, assurez-vous d'avoir installé :
 1. **Cloner le projet** (ou télécharger les fichiers)
 
 ```bash
-git clone <url-du-repo>
-cd saas-ia-boilerplate
+git clone https://github.com/albvnn/IA-Academy-Boilerplate.git
+cd IA-Academy-Boilerplate
 ```
 
 2. **Installer les dépendances**
